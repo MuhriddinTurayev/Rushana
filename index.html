@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ma'lumotlar QR</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #6e8efb, #a777e3);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    h1 {
+      color: #fff;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    .card {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      max-width: 400px;
+      width: 100%;
+      text-align: left;
+      margin-bottom: 30px;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card p {
+      margin-bottom: 15px;
+      font-size: 1.1em;
+    }
+    .card strong {
+      color: #6e8efb;
+    }
+    #qr {
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Ma'lumotlaringiz QR</h1>
+
+  <div class="card">
+    <p><strong>Tug‘ilgan sana:</strong> 2004-10-21</p>
+    <p><strong>Tug‘ilgan joy:</strong> Samarqand viloyati, Nurobod tumani, Jom qishlog‘i</p>
+    <p><strong>Maktab:</strong> 21-maktab</p>
+    <p><strong>Oilaviy holat:</strong> Oilali</p>
+    <p><strong>Talabalik yili:</strong> 2023</p>
+    <p><strong>Universitet:</strong> O‘zbekiston Milliy Universiteti</p>
+    <p><strong>Fakultet:</strong> Jurnalistika</p>
+  </div>
+
+  <div id="qr"></div>
+
+  <!-- QRCode.js kutubxonasi -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    const data = {
+      tugilganSana: "2004-10-21",
+      tugilganJoy: "Samarqand viloyati, Nurobod tumani, Jom qishlog‘i",
+      maktab: "21-maktab",
+      oilaviyHolat: "Oilali",
+      talabalikYili: "2023",
+      universitet: "O‘zbekiston Milliy Universiteti",
+      fakultet: "Jurnalistika"
+    };
+
+    new QRCode(document.getElementById("qr"), {
+      text: JSON.stringify(data, null, 2),
+      width: 220,
+      height: 220,
+      colorDark : "#6e8efb",
+      colorLight : "#ffffff",
+      correctLevel : QRCode.CorrectLevel.H
+    });
+  </script>
+
+</body>
+</html>
